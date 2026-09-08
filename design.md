@@ -1,79 +1,43 @@
-# Portfolio design system
+# Portfolio design
 
-Updated: 2026-09-08
+## Current direction
 
-## Direction
-
-An editorial portfolio for AI research and software. Large serif headlines establish a personal voice; concise project descriptions lead to public reports and code. Rust identifies selected states and actions. Diagram colors encode structure and execution state, never measured performance.
+The user requested simplicity and more projects. Use a compact, single-column page with the person's name, a short introduction, and text project entries.
 
 ## Tokens
 
-All colors below use sRGB. Spacing uses a 4 px base. These values are implemented in the root declaration in `styles.css`.
-
 | Token | Value |
 | --- | --- |
-| `--canvas` | `#f7f4f0` |
-| `--surface` | `#efeae4` |
-| `--ink` | `#24221e` |
-| `--muted` | `#6c6760` |
-| `--line` | `#d5cec3` |
-| `--accent` | `#a13d2d` |
-| `--accent-hover` | `#8c3527` |
-| `--accent-soft` | `#f9edeb` |
-| `--inverse-muted` | `#c1bcb3` |
-| `--inverse-line` | `#787268` |
-| `--inverse-accent` | `#de9387` |
-| `--display` | `Newsreader, Georgia, 'Times New Roman', serif` |
-| `--body` | `'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif` |
-| `--space-1` | `4px` |
-| `--space-2` | `8px` |
-| `--space-3` | `12px` |
-| `--space-4` | `16px` |
-| `--space-6` | `24px` |
-| `--space-8` | `32px` |
-| `--space-10` | `40px` |
-| `--space-12` | `48px` |
-| `--space-16` | `64px` |
-| `--space-20` | `80px` |
-| `--space-24` | `96px` |
-| `--type-label` | `11px` |
-| `--type-small` | `13px` |
-| `--type-body` | `16px` |
-| `--type-intro` | `18px` |
-| `--type-heading` | `clamp(44px, 4.1vw, 60px)` |
-| `--type-plate` | `clamp(32px, 3.2vw, 46px)` |
-| `--type-hero` | `clamp(76px, 8.7vw, 128px)` |
-| `--content-width` | `1200px` |
-| `--page-gutter` | `64px` |
-| `--duration` | `180ms` |
-| `--ease` | `cubic-bezier(.2,.65,.3,1)` |
+| `--background` | `#ffffff` |
+| `--text` | `#242424` |
+| `--muted` | `#626262` |
+| `--line` | `#e5e5e5` |
+| `--note` | `#f6f6f6` |
+| `--font` | `-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif` |
+| `--width` | `800px` |
+| `--gutter` | `24px`, `20px` below 600 px |
 
-## Typography
+## Layout and type
 
-- Newsreader: display headings and wordmark; normal and italic, optical sizing enabled. Georgia is the fallback.
-- Public Sans: body copy, labels, navigation, and diagram explanations; normal and italic. System sans-serif is the fallback.
-- Variable WOFF2 files are served from `assets/fonts/`. Latin, Latin Extended, punctuation, and arrows are included. Font licenses are adjacent to the files.
-- Headline line-height: 0.99; project title: 1.03; diagram title: 1.08; body: 1.65; project description: 1.75.
-- Tracking: headline -0.045em, project heading -0.04em, diagram heading -0.035em, uppercase labels 0.1em.
-
-## Layout
-
-- Desktop: a 12-column grid with 24 px gutters, a 1200 px maximum content area, and 64 px minimum page margins. Section margins are 80?96 px; the header is 104 px tall.
-- Project visuals span seven columns. Copy spans four with one separating column. The second project reverses the visual order on desktop.
-- At 1100 px, page margins become 40 px and project copy uses five columns.
-- At 760 px, project copy precedes the visual in a single column; page margins become 24 px. The header is 88 px tall.
-- At 420 px, page margins become 20 px and hero type uses clamp(40px, 12.3vw, 60px).
-- Diagrams remain legible within the page; horizontal scrolling is not part of the layout.
+- Name: 32 px / 1.25, weight 600; 28 px on phones.
+- Project title: 19 px / 1.4, weight 600.
+- Descriptions: 15 px / 1.65; metadata 12 px / 1.5; links 13 px.
+- Spacing: 4, 8, 12, 16, 20, 24, 32, 40, 64 px.
+- Header padding: 64 px top / 40 px bottom; 40 px / 32 px on phones.
+- Project rows: 24 px vertical padding; 20 px on phones. A light rule separates entries.
+- At 600 px, project metadata moves below the title.
 
 ## Interaction
 
-- Native anchors, details/summary, and radio inputs work with JavaScript disabled.
-- Each observation radio shows one explanation. Native arrow keys move through the group; the chosen label has a rust border and a bottom rule. Focus has a separate 2 px outline offset by 4 px.
-- Links have 44 px minimum target height; filled project links and disclosures have 48 px minimum height.
-- Hover feedback uses 180 ms transitions and cubic-bezier(.2,.65,.3,1). Link arrows translate by 2 px. Transitions and smooth scrolling apply only when reduced motion is not requested.
-- No automatic animation, scroll interception, or content entrance delay.
+- Plain underlined links; native disclosures for existing research details.
+- Visible 2 px focus outline with 4 px offset; keyboard skip link.
+- No animation or JavaScript. System fonts require no font downloads.
+- Text contrast floor: 4.5:1 on the actual background.
 
 ## Version history
 
 - 2026-09-08 v1: Editorial redesign, self-hosted fonts, semantic palette, and native observation explorer.
 - 2026-09-08 v1.1: Improved phone reading order and minimum type sizes; diagram lines now exceed 3:1 contrast. Removed the unused --space-32 token.
+- 2026-09-08 v1.2: Marked the overall visual direction as rejected following direct user feedback. Existing tokens document the implementation, not accepted preferences.
+
+- 2026-09-08 v2: Replaced the rejected editorial style with the simple project list explicitly requested by the user. Superseded the previous type, color, spacing, and interaction tokens.

@@ -32,20 +32,10 @@ def main():
     OUTPUT.mkdir(exist_ok=True)
     checks = []
     tokens = dict(re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6});", (ROOT / "styles.css").read_text()))
-    pairs = [
-        ("ink", "canvas"), ("muted", "canvas"), ("accent", "canvas"),
-        ("muted", "surface"), ("accent", "surface"), ("canvas", "ink"),
-        ("inverse-muted", "ink"), ("inverse-accent", "ink"),
-        ("muted", "accent-soft"), ("accent", "accent-soft"),
-    ]
-    for foreground, background in pairs:
-        name = f"{foreground}/{background}"
+    for foreground, background in [("text", "background"), ("muted", "background"), ("muted", "note")]:
         ratio = contrast(tokens[foreground], tokens[background])
-        assert ratio >= 4.5, f"Insufficient contrast for {name}: {ratio}"
-        checks.append({"check": name, "contrast": round(ratio, 2)})
-    diagram_ratio = contrast(tokens["inverse-line"], tokens["ink"])
-    assert diagram_ratio >= 3, "Insufficient diagram line contrast"
-    checks.append({"check": "diagram-lines/ink", "contrast": round(diagram_ratio, 2)})
+        assert ratio >= 4.5, f"Insufficient contrast: {foreground}/{background}"
+        checks.append({"check": f"{foreground}/{background}", "contrast": round(ratio, 2)})
 
     handler = functools.partial(QuietHandler, directory=str(ROOT))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
@@ -66,11 +56,8 @@ def main():
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 response = page.goto(origin, wait_until="networkidle")
                 assert response.status == 200
-                page.evaluate("document.fonts.ready")
-                assert page.evaluate("document.fonts.check('16px \"Public Sans\"')")
-                assert page.evaluate("document.fonts.check('48px Newsreader')")
                 assert page.locator("h1").count() == 1
-                assert page.locator("article").count() == 2
+                assert page.locator("article").count() == 9
                 assert page.locator("html").get_attribute("lang") == "en"
                 assert page.title() == "Mehdi Benbarka — AI & software projects"
                 assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow at {width}px"
@@ -97,21 +84,6 @@ def main():
                     page.keyboard.press("Enter")
                     assert not detail.evaluate("el => el.open")
 
-                page.locator('label[for="view-rejected"]').click()
-                assert page.locator("#view-rejected").is_checked()
-                assert page.locator(".panel-rejected").is_visible()
-                assert not page.locator(".panel-pending").is_visible()
-                page.locator("#view-rejected").focus()
-                page.keyboard.press("ArrowRight")
-                assert page.locator("#view-applied").is_checked()
-                assert page.locator(".panel-applied").is_visible()
-                assert not page.locator(".panel-rejected").is_visible()
-                page.locator('label[for="view-pending"]').click()
-                assert page.locator(".panel-pending").is_visible()
-                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
-
-                page.get_by_role("navigation").get_by_role("link", name="About").click()
-                assert page.url.endswith("#about")
                 page.get_by_role("link", name="Back to top").click()
                 assert page.url.endswith("#top")
                 page.locator("body").click(position={"x": 2, "y": 2})
