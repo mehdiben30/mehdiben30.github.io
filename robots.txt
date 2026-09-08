@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mehdiben30.github.io/sitemap.xml

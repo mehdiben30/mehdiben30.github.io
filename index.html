@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <title>Mehdi Benbarka — AI &amp; software projects</title>
+  <meta name="description" content="Selected projects by Mehdi Benbarka: reproducible research on AI monitoring and tools for evaluating LLM agents. Explore the methods, code, and project documentation.">
+  <link rel="canonical" href="https://mehdiben30.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mehdi Benbarka — AI &amp; software projects">
+  <meta property="og:description" content="Research experiments and software projects, with the code and methods behind them.">
+  <meta property="og:url" content="https://mehdiben30.github.io/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="./" aria-label="Mehdi Benbarka, home">Mehdi Benbarka<span aria-hidden="true">.</span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a class="nav-github" href="https://github.com/mehdiben30">GitHub <span class="external-mark" aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">Personal portfolio</p>
+        <h1 id="intro-title">Selected work in<br>AI &amp; <em>software.</em></h1>
+      </div>
+      <div class="intro-note">
+        <p>Research experiments and software projects, with the code and methods behind them.</p>
+        <a href="#work">Explore the projects <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <h2 id="work-title">Selected projects</h2>
+        <span>02 projects · Code &amp; documentation</span>
+      </div>
+
+      <article class="project" aria-labelledby="outcome-title">
+        <span class="project-number" aria-hidden="true">01</span>
+        <div class="project-copy">
+          <p class="eyebrow">AI monitoring · Research study</p>
+          <h3 id="outcome-title">Attempt vs Outcome</h3>
+          <p class="project-description">Does an AI monitor judge the same attempted action differently when it succeeds or fails? A reproducible study of how visible execution outcomes affect monitoring judgments.</p>
+          <div class="project-links">
+            <a href="https://github.com/mehdiben30/attemptvsoutcome/blob/main/docs/research_report/README.md">Read the report <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/mehdiben30/attemptvsoutcome">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <ul class="project-tags" aria-label="Project topics">
+            <li>Python</li><li>Controlled experiments</li><li>Reproducibility</li>
+          </ul>
+        </div>
+        <figure class="project-visual">
+          <div class="diagram">
+            <p class="diagram-heading">Experimental design</p>
+            <p class="diagram-title">Same command. Three views.</p>
+            <ul class="diagram-steps" aria-label="Observation points">
+              <li><span>Before execution</span><strong>Pending</strong></li>
+              <li><span>After execution</span><strong>Rejected</strong></li>
+              <li><span>After execution</span><strong>Applied</strong></li>
+            </ul>
+            <p class="diagram-note">Compare the monitor’s judgments across views.</p>
+          </div>
+          <figcaption>Study design, shown for each unauthorized and authorized command.</figcaption>
+        </figure>
+        <details class="project-detail">
+          <summary>Method &amp; scope</summary>
+          <div class="detail-content">
+            <div>
+              <h4>The experiment</h4>
+              <p>The command study compares pending, rejected, and applied views across six development situations. Two monitoring prompts assess unauthorized actions and authorized controls, with inputs and judgments archived for offline reproduction.</p>
+            </div>
+            <div>
+              <h4>What the evidence covers</h4>
+              <p>The comparison includes full execution feedback, so it does not isolate the effect of a success or failure label alone. These selected situations do not establish general monitor failure rates. The earlier MVP remains a separate experiment.</p>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="project" aria-labelledby="autoprobe-title">
+        <span class="project-number" aria-hidden="true">02</span>
+        <div class="project-copy">
+          <p class="eyebrow">Agent evaluation · In development</p>
+          <h3 id="autoprobe-title">AutoProbe</h3>
+          <p class="project-description">An evaluation framework for exploring the tool-use capabilities of LLM agents. It organizes tasks into validated families and records how a model performs across repeated runs.</p>
+          <div class="project-links">
+            <a href="https://github.com/mehdiben30/Autoprobe#readme">Explore the project <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/mehdiben30/Autoprobe/tree/main/autoprobe">View code <span aria-hidden="true">↗</span></a>
+          </div>
+          <ul class="project-tags" aria-label="Project topics">
+            <li>Python</li><li>LLM agents</li><li>Evaluation tooling</li>
+          </ul>
+        </div>
+        <figure class="project-visual">
+          <div class="diagram diagram-green">
+            <p class="diagram-heading">Evaluation workflow</p>
+            <p class="diagram-title">Make capabilities testable.</p>
+            <ol class="diagram-steps" aria-label="Evaluation workflow">
+              <li><strong>Validate</strong><span>Task families</span></li>
+              <li><strong>Evaluate</strong><span>Repeated runs</span></li>
+              <li><strong>Archive</strong><span>Recorded results</span></li>
+            </ol>
+            <p class="diagram-note">A family of tasks is the unit of evaluation.</p>
+          </div>
+          <figcaption>Workflow illustration. The framework is under active development.</figcaption>
+        </figure>
+        <details class="project-detail">
+          <summary>Approach &amp; current status</summary>
+          <div class="detail-content">
+            <div>
+              <h4>The approach</h4>
+              <p>Related task instances form a family around one capability hypothesis. Validation, repeated evaluation, and structured records make it possible to inspect failures and compare performance at the family level.</p>
+            </div>
+            <div>
+              <h4>Current scope</h4>
+              <p>The public repository documents the CLI, schemas, storage, mock evaluation, BFCL task import, and initial calibration. Adaptive exploration and later analysis stages remain part of the implementation plan.</p>
+            </div>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">Behind the projects</h2>
+      <div class="about-copy">
+        <p>I’m Mehdi. These projects explore how AI systems behave, how to evaluate them, and how to make that work reproducible.</p>
+        <p>Each project links to its source and documentation, including its current scope and limitations. You can find more of my work on GitHub.</p>
+        <div class="about-links">
+          <a href="https://github.com/mehdiben30">Find me on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer shell">
+    <span>Mehdi Benbarka · Selected work</span>
+    <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+  </footer>
+</body>
+</html>
