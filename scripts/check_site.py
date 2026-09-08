@@ -4,6 +4,7 @@ import functools
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
+import re
 import threading
 
 from playwright.sync_api import sync_playwright
@@ -30,18 +31,21 @@ def contrast(first, second):
 def main():
     OUTPUT.mkdir(exist_ok=True)
     checks = []
-    pairs = {
-        "body/canvas": ("#252923", "#faf9f6"),
-        "muted/canvas": ("#61665f", "#faf9f6"),
-        "links/canvas": ("#315c48", "#faf9f6"),
-        "muted/surface": ("#61665f", "#f0eee8"),
-        "muted/green": ("#61665f", "#eef6f3"),
-        "accent/green": ("#315c48", "#eef6f3"),
-    }
-    for name, pair in pairs.items():
-        ratio = contrast(*pair)
+    tokens = dict(re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6});", (ROOT / "styles.css").read_text()))
+    pairs = [
+        ("ink", "canvas"), ("muted", "canvas"), ("accent", "canvas"),
+        ("muted", "surface"), ("accent", "surface"), ("canvas", "ink"),
+        ("inverse-muted", "ink"), ("inverse-accent", "ink"),
+        ("muted", "accent-soft"), ("accent", "accent-soft"),
+    ]
+    for foreground, background in pairs:
+        name = f"{foreground}/{background}"
+        ratio = contrast(tokens[foreground], tokens[background])
         assert ratio >= 4.5, f"Insufficient contrast for {name}: {ratio}"
         checks.append({"check": name, "contrast": round(ratio, 2)})
+    diagram_ratio = contrast(tokens["inverse-line"], tokens["ink"])
+    assert diagram_ratio >= 3, "Insufficient diagram line contrast"
+    checks.append({"check": "diagram-lines/ink", "contrast": round(diagram_ratio, 2)})
 
     handler = functools.partial(QuietHandler, directory=str(ROOT))
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
@@ -50,7 +54,7 @@ def main():
     try:
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch(channel="chrome", headless=True)
-            for width, height in [(1440, 1000), (768, 1024), (390, 844), (320, 720)]:
+            for width, height in [(1440, 1000), (1024, 900), (768, 1024), (390, 844), (320, 720)]:
                 context = browser.new_context(
                     viewport={"width": width, "height": height},
                     device_scale_factor=1,
@@ -62,6 +66,9 @@ def main():
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 response = page.goto(origin, wait_until="networkidle")
                 assert response.status == 200
+                page.evaluate("document.fonts.ready")
+                assert page.evaluate("document.fonts.check('16px \"Public Sans\"')")
+                assert page.evaluate("document.fonts.check('48px Newsreader')")
                 assert page.locator("h1").count() == 1
                 assert page.locator("article").count() == 2
                 assert page.locator("html").get_attribute("lang") == "en"
@@ -90,6 +97,19 @@ def main():
                     page.keyboard.press("Enter")
                     assert not detail.evaluate("el => el.open")
 
+                page.locator('label[for="view-rejected"]').click()
+                assert page.locator("#view-rejected").is_checked()
+                assert page.locator(".panel-rejected").is_visible()
+                assert not page.locator(".panel-pending").is_visible()
+                page.locator("#view-rejected").focus()
+                page.keyboard.press("ArrowRight")
+                assert page.locator("#view-applied").is_checked()
+                assert page.locator(".panel-applied").is_visible()
+                assert not page.locator(".panel-rejected").is_visible()
+                page.locator('label[for="view-pending"]').click()
+                assert page.locator(".panel-pending").is_visible()
+                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+
                 page.get_by_role("navigation").get_by_role("link", name="About").click()
                 assert page.url.endswith("#about")
                 page.get_by_role("link", name="Back to top").click()
@@ -103,6 +123,14 @@ def main():
                 page.get_by_role("link", name="Back to the portfolio").click()
                 assert page.url == origin + "/"
                 context.close()
+            context = browser.new_context(java_script_enabled=False, reduced_motion="reduce")
+            page = context.new_page()
+            page.goto(origin, wait_until="networkidle")
+            for width in [360, 420, 421, 640, 760, 761, 900, 1100, 1101, 1280, 1920]:
+                page.set_viewport_size({"width": width, "height": 900})
+                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow at breakpoint {width}"
+            checks.append({"check": "responsive-breakpoints", "status": "passed"})
+            context.close()
             browser.close()
     finally:
         server.shutdown()

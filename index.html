@@ -3,146 +3,138 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf9f6">
+  <meta name="theme-color" content="#f7f4f0">
   <title>Mehdi Benbarka — AI &amp; software projects</title>
   <meta name="description" content="Selected projects by Mehdi Benbarka: reproducible research on AI monitoring and tools for evaluating LLM agents. Explore the methods, code, and project documentation.">
   <link rel="canonical" href="https://mehdiben30.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mehdi Benbarka — AI &amp; software projects">
-  <meta property="og:description" content="Research experiments and software projects, with the code and methods behind them.">
+  <meta property="og:description" content="AI systems. Human questions. Research experiments and software projects by Mehdi Benbarka.">
   <meta property="og:url" content="https://mehdiben30.github.io/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/fonts/newsreader-roman.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/public-sans-roman.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header shell">
-    <a class="wordmark" href="./" aria-label="Mehdi Benbarka, home">Mehdi Benbarka<span aria-hidden="true">.</span></a>
+    <a class="wordmark" href="./" aria-label="Mehdi Benbarka, home"><span class="wordmark-symbol" aria-hidden="true">m<span>.</span></span><span>Mehdi Benbarka</span></a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Work</a>
+      <a href="#work">Work <span class="nav-index" aria-hidden="true">02</span></a>
       <a href="#about">About</a>
-      <a class="nav-github" href="https://github.com/mehdiben30">GitHub <span class="external-mark" aria-hidden="true">↗</span></a>
+      <a href="https://github.com/mehdiben30">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
-  <main id="main" class="shell">
-    <section class="intro" aria-labelledby="intro-title">
-      <div>
-        <p class="eyebrow">Personal portfolio</p>
-        <h1 id="intro-title">Selected work in<br>AI &amp; <em>software.</em></h1>
-      </div>
+  <main id="main">
+    <section class="intro shell" aria-labelledby="intro-title">
+      <p class="eyebrow intro-label">A personal collection of research &amp; code</p>
+      <h1 id="intro-title">AI systems.<br><em>Human questions.</em></h1>
       <div class="intro-note">
-        <p>Research experiments and software projects, with the code and methods behind them.</p>
-        <a href="#work">Explore the projects <span aria-hidden="true">↓</span></a>
+        <p>I’m Mehdi. I build experiments and tools to understand how AI systems behave.</p>
+        <a class="text-link" href="#work">Explore my work <span class="arrow" aria-hidden="true">↘</span></a>
       </div>
+      <div class="intro-foot" aria-hidden="true"><span>AI monitoring / Agent evaluation</span><span>Selected work, 2026 <span class="down-arrow">↓</span></span></div>
     </section>
 
-    <section id="work" aria-labelledby="work-title">
+    <section id="work" class="work shell" aria-labelledby="work-title">
       <div class="section-heading">
-        <h2 id="work-title">Selected projects</h2>
-        <span>02 projects · Code &amp; documentation</span>
+        <h2 id="work-title">Selected work <span>(02)</span></h2>
+        <p>Questions, experiments, and the code behind them.</p>
       </div>
 
       <article class="project" aria-labelledby="outcome-title">
-        <span class="project-number" aria-hidden="true">01</span>
+        <div class="project-heading"><span class="project-index">01 /</span><p class="eyebrow">AI monitoring</p><span class="project-kind">Research study</span></div>
         <div class="project-copy">
-          <p class="eyebrow">AI monitoring · Research study</p>
-          <h3 id="outcome-title">Attempt vs Outcome</h3>
+          <p class="project-kicker">The question</p>
+          <h3 id="outcome-title">Attempt <br>vs Outcome<span class="title-period">.</span></h3>
           <p class="project-description">Does an AI monitor judge the same attempted action differently when it succeeds or fails? A reproducible study of how visible execution outcomes affect monitoring judgments.</p>
+          <ul class="project-tags" aria-label="Project topics"><li>Python</li><li>Controlled experiments</li><li>Reproducibility</li></ul>
           <div class="project-links">
-            <a href="https://github.com/mehdiben30/attemptvsoutcome/blob/main/docs/research_report/README.md">Read the report <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/mehdiben30/attemptvsoutcome">View code <span aria-hidden="true">↗</span></a>
+            <a class="button-link" href="https://github.com/mehdiben30/attemptvsoutcome/blob/main/docs/research_report/README.md">Read the report <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/mehdiben30/attemptvsoutcome">View code <span class="arrow" aria-hidden="true">↗</span></a>
           </div>
-          <ul class="project-tags" aria-label="Project topics">
-            <li>Python</li><li>Controlled experiments</li><li>Reproducibility</li>
-          </ul>
+          <details class="project-detail">
+            <summary>Method &amp; scope <span class="disclosure-icon" aria-hidden="true"></span></summary>
+            <div class="detail-content">
+              <div><h4>The experiment</h4><p>The command study compares pending, rejected, and applied views across six development situations. Two monitoring prompts assess unauthorized actions and authorized controls, with inputs and judgments archived for offline reproduction.</p></div>
+              <div><h4>What the evidence covers</h4><p>The comparison includes full execution feedback, so it does not isolate the effect of a success or failure label alone. These selected situations do not establish general monitor failure rates. The earlier MVP remains a separate experiment.</p></div>
+            </div>
+          </details>
         </div>
-        <figure class="project-visual">
-          <div class="diagram">
-            <p class="diagram-heading">Experimental design</p>
-            <p class="diagram-title">Same command. Three views.</p>
-            <ul class="diagram-steps" aria-label="Observation points">
-              <li><span>Before execution</span><strong>Pending</strong></li>
-              <li><span>After execution</span><strong>Rejected</strong></li>
-              <li><span>After execution</span><strong>Applied</strong></li>
-            </ul>
-            <p class="diagram-note">Compare the monitor’s judgments across views.</p>
-          </div>
-          <figcaption>Study design, shown for each unauthorized and authorized command.</figcaption>
+        <figure class="project-visual outcome-visual">
+          <div class="plate-heading"><span>Observation study</span><span aria-hidden="true">Fig. 01</span></div>
+          <p class="plate-title">Same action.<br><em>A different outcome.</em></p>
+          <fieldset class="observation-demo">
+            <legend>Explore the three observation points</legend>
+            <input class="view-radio" type="radio" name="observation" id="view-pending" checked>
+            <input class="view-radio" type="radio" name="observation" id="view-rejected">
+            <input class="view-radio" type="radio" name="observation" id="view-applied">
+            <div class="view-options">
+              <label for="view-pending"><span class="state-icon state-pending" aria-hidden="true"></span><strong>Pending</strong><span>Before execution</span></label>
+              <label for="view-rejected"><span class="state-icon state-rejected" aria-hidden="true"></span><strong>Rejected</strong><span>After execution</span></label>
+              <label for="view-applied"><span class="state-icon state-applied" aria-hidden="true"></span><strong>Applied</strong><span>After execution</span></label>
+            </div>
+            <div class="observation-panels">
+              <p class="view-panel panel-pending"><span>01 / Pending</span>The monitor sees the command before it runs.</p>
+              <p class="view-panel panel-rejected"><span>02 / Rejected</span>The monitor sees the command and feedback showing it was rejected.</p>
+              <p class="view-panel panel-applied"><span>03 / Applied</span>The monitor sees the command and feedback showing it was applied.</p>
+            </div>
+          </fieldset>
+          <figcaption>Study design illustration. Each view includes authorized and unauthorized commands.</figcaption>
         </figure>
-        <details class="project-detail">
-          <summary>Method &amp; scope</summary>
-          <div class="detail-content">
-            <div>
-              <h4>The experiment</h4>
-              <p>The command study compares pending, rejected, and applied views across six development situations. Two monitoring prompts assess unauthorized actions and authorized controls, with inputs and judgments archived for offline reproduction.</p>
-            </div>
-            <div>
-              <h4>What the evidence covers</h4>
-              <p>The comparison includes full execution feedback, so it does not isolate the effect of a success or failure label alone. These selected situations do not establish general monitor failure rates. The earlier MVP remains a separate experiment.</p>
-            </div>
-          </div>
-        </details>
       </article>
 
-      <article class="project" aria-labelledby="autoprobe-title">
-        <span class="project-number" aria-hidden="true">02</span>
+      <article class="project project-reverse" aria-labelledby="autoprobe-title">
+        <div class="project-heading"><span class="project-index">02 /</span><p class="eyebrow">Agent evaluation</p><span class="project-kind">In development</span></div>
         <div class="project-copy">
-          <p class="eyebrow">Agent evaluation · In development</p>
-          <h3 id="autoprobe-title">AutoProbe</h3>
+          <p class="project-kicker">The tool</p>
+          <h3 id="autoprobe-title">AutoProbe<span class="title-period">.</span></h3>
           <p class="project-description">An evaluation framework for exploring the tool-use capabilities of LLM agents. It organizes tasks into validated families and records how a model performs across repeated runs.</p>
+          <ul class="project-tags" aria-label="Project topics"><li>Python</li><li>LLM agents</li><li>Evaluation tooling</li></ul>
           <div class="project-links">
-            <a href="https://github.com/mehdiben30/Autoprobe#readme">Explore the project <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/mehdiben30/Autoprobe/tree/main/autoprobe">View code <span aria-hidden="true">↗</span></a>
+            <a class="button-link" href="https://github.com/mehdiben30/Autoprobe#readme">Explore the project <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/mehdiben30/Autoprobe/tree/main/autoprobe">View code <span class="arrow" aria-hidden="true">↗</span></a>
           </div>
-          <ul class="project-tags" aria-label="Project topics">
-            <li>Python</li><li>LLM agents</li><li>Evaluation tooling</li>
-          </ul>
+          <details class="project-detail">
+            <summary>Approach &amp; current status <span class="disclosure-icon" aria-hidden="true"></span></summary>
+            <div class="detail-content">
+              <div><h4>The approach</h4><p>Related task instances form a family around one capability hypothesis. Validation, repeated evaluation, and structured records make it possible to inspect failures and compare performance at the family level.</p></div>
+              <div><h4>Current scope</h4><p>The public repository documents the CLI, schemas, storage, mock evaluation, BFCL task import, and initial calibration. Adaptive exploration and later analysis stages remain part of the implementation plan.</p></div>
+            </div>
+          </details>
         </div>
-        <figure class="project-visual">
-          <div class="diagram diagram-green">
-            <p class="diagram-heading">Evaluation workflow</p>
-            <p class="diagram-title">Make capabilities testable.</p>
-            <ol class="diagram-steps" aria-label="Evaluation workflow">
-              <li><strong>Validate</strong><span>Task families</span></li>
-              <li><strong>Evaluate</strong><span>Repeated runs</span></li>
-              <li><strong>Archive</strong><span>Recorded results</span></li>
-            </ol>
-            <p class="diagram-note">A family of tasks is the unit of evaluation.</p>
-          </div>
+        <figure class="project-visual probe-visual">
+          <div class="plate-heading"><span>Evaluation framework</span><span aria-hidden="true">Fig. 02</span></div>
+          <p class="plate-title">One capability.<br><em>A family of tests.</em></p>
+          <svg class="family-diagram" viewBox="0 0 560 180" role="img" aria-labelledby="family-title family-desc">
+            <title id="family-title">From a task family to repeated evaluations and recorded results</title>
+            <desc id="family-desc">A central task family branches into related tasks, which branch again into repeated runs. This is an illustration of the evaluation structure, not measured results.</desc>
+            <g class="diagram-connections" fill="none" stroke-width="1.5"><path d="M72 90H135Q151 90 151 74V36Q151 20 167 20H254M151 90H254M151 90V144Q151 160 167 160H254"/><path d="M276 20H365Q381 20 381 12V8H476M381 20V32H476M276 90H365Q381 90 381 82V78H476M381 90V102H476M276 160H365Q381 160 381 152V148H476M381 160V172H476"/></g>
+            <g class="diagram-nodes" stroke-width="1.5"><circle cx="56" cy="90" r="23"/><circle cx="264" cy="20" r="10"/><circle cx="264" cy="90" r="10"/><circle cx="264" cy="160" r="10"/></g>
+            <g class="diagram-results"><rect x="477" y="2" width="12" height="12"/><rect x="477" y="26" width="12" height="12"/><rect x="477" y="72" width="12" height="12"/><rect x="477" y="96" width="12" height="12"/><rect x="477" y="142" width="12" height="12"/><rect x="477" y="166" width="12" height="12"/></g>
+            <path class="diagram-root" d="M48 90h16M56 82v16" fill="none" stroke-width="1.5"/>
+          </svg>
+          <ol class="workflow-labels"><li><span>01</span>Validate</li><li><span>02</span>Evaluate</li><li><span>03</span>Archive</li></ol>
           <figcaption>Workflow illustration. The framework is under active development.</figcaption>
         </figure>
-        <details class="project-detail">
-          <summary>Approach &amp; current status</summary>
-          <div class="detail-content">
-            <div>
-              <h4>The approach</h4>
-              <p>Related task instances form a family around one capability hypothesis. Validation, repeated evaluation, and structured records make it possible to inspect failures and compare performance at the family level.</p>
-            </div>
-            <div>
-              <h4>Current scope</h4>
-              <p>The public repository documents the CLI, schemas, storage, mock evaluation, BFCL task import, and initial calibration. Adaptive exploration and later analysis stages remain part of the implementation plan.</p>
-            </div>
-          </div>
-        </details>
       </article>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-title">
-      <h2 id="about-title">Behind the projects</h2>
-      <div class="about-copy">
-        <p>I’m Mehdi. These projects explore how AI systems behave, how to evaluate them, and how to make that work reproducible.</p>
-        <p>Each project links to its source and documentation, including its current scope and limitations. You can find more of my work on GitHub.</p>
-        <div class="about-links">
-          <a href="https://github.com/mehdiben30">Find me on GitHub <span aria-hidden="true">↗</span></a>
+      <div class="about-inner shell">
+        <div><p class="eyebrow">Behind the projects</p><h2 id="about-title">Good questions.<br><em>Open work.</em></h2></div>
+        <div class="about-copy">
+          <p>I’m Mehdi. These projects explore how AI systems behave, how to evaluate them, and how to make that work reproducible.</p>
+          <p>Each project links to its source and documentation, including its current scope and limitations. You can find more of my work on GitHub.</p>
+          <a class="text-link" href="https://github.com/mehdiben30">Find me on GitHub <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
-  <footer class="site-footer shell">
-    <span>Mehdi Benbarka · Selected work</span>
-    <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
-  </footer>
+  <footer class="site-footer shell"><span>Mehdi Benbarka <span class="footer-note">/ AI &amp; software</span></span><a href="#top">Back to top <span class="arrow" aria-hidden="true">↑</span></a></footer>
 </body>
 </html>
