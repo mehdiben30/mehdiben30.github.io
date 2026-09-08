@@ -57,7 +57,7 @@ def main():
                 response = page.goto(origin, wait_until="networkidle")
                 assert response.status == 200
                 assert page.locator("h1").count() == 1
-                assert page.locator("article").count() == 9
+                assert page.locator("article").count() == 6
                 assert page.locator("html").get_attribute("lang") == "en"
                 assert page.title() == "Mehdi Benbarka — AI & software projects"
                 assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), f"Overflow at {width}px"

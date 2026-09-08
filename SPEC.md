@@ -8,7 +8,7 @@
 
 ## Current scope
 
-A simple English page containing the person's name, a short introduction, a GitHub profile link, and nine project entries:
+A simple English page containing the person's name, a short introduction, a GitHub profile link, and six project entries:
 
 1. Attempt vs Outcome
 2. Calibrate Once?
@@ -16,11 +16,8 @@ A simple English page containing the person's name, a short introduction, a GitH
 4. PatternLens
 5. GPT Implementation
 6. Few-shot Clustering with LLMs
-7. IceBreaker
-8. Car Rental API
-9. Docker Classification Workflow
 
-Descriptions are based on the public repositories and, for IceBreaker and the clustering project, the existing public portfolio source in `intelligent-canvas-exhibit`. The clustering link is explicitly labeled as a reference paper. IceBreaker has no invented or disabled project link. The duplicate GPT repository, empty repositories, introductory notebook, forks, and the older portfolio itself are omitted.
+Descriptions are based on the public repositories and, for the clustering project, the existing public portfolio source in `intelligent-canvas-exhibit`. The clustering link is explicitly labeled as a reference paper. The duplicate GPT repository, empty repositories, introductory notebook, forks, and the older portfolio itself are omitted.
 
 ## Behavior and content
 
@@ -46,3 +43,4 @@ The user has been asked whether to also mention private projects. The current ve
 - 2026-09-08 v1.2: User rejected the overall design. Reopened visual direction; previous technical verification must not be read as user approval.
 
 - 2026-09-08 v2: Implemented the user-requested simple layout and expanded the page from two to nine documented projects.
+- 2026-09-08 v2.1: Removed IceBreaker, Car Rental API, and Docker Classification Workflow at the user's request. Six projects remain.
